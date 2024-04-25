@@ -10,7 +10,7 @@ async def receive_request(request: Request):
     data = await request.json()
 
     try:
-        with open('nodes/results.json', 'r') as file:
+        with open('nodes/efficient_node.json', 'r') as file:
             efficient_node = json.load(file)            
 
         response = requests.post(str(efficient_node["url"]), json=data)

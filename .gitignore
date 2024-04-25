@@ -10,4 +10,5 @@
 
 # My API token
 /nodes/node_list.py
-/nodes/results.json
+/nodes/efficient_node.json
+/nodes/healthcheck_results.json

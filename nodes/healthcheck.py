@@ -41,6 +41,10 @@ def healthcheck():
 
         healthcheck.append(result)
 
+        # Safe the healthcheck results in a JSON file
+        with open('healthcheck_results.json', 'w') as file:
+            json.dump(healthcheck, file)
+
     return healthcheck
 
 
@@ -60,7 +64,7 @@ def select_node():
         node = min(healthcheck_list, key=lambda x:x['response_time'])
 
     # Save the efficient node in a JSON doc
-    with open('results.json', 'w') as file:
+    with open('efficient_node.json', 'w') as file:
         json.dump(node, file)
 
 
