@@ -1,0 +1,13 @@
+# Python virtual environment
+/tfg-env
+
+# Pycaches
+/__pycache__
+/nodes/__pycache__
+
+# Init.py
+/nodes/__init__.py
+
+# My API token
+/nodes/node_list.py
+/nodes/results.json
