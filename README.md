@@ -25,4 +25,5 @@ uvicorn main:app --reload
 
 ## Manual de implementación
 * Definir el diccionario 'nodes' del archivo '/nodes/node_list.py'
-* Crear el archivo vacio '/nodes/results.json' si no existe
+* Crear el archivo vacio '/nodes/efficient_node.json' si no existe
+* Crear el archivo vacio '/nodes/healthcheck_results.json' si no existe
