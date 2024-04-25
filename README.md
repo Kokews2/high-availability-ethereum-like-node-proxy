@@ -24,5 +24,5 @@ uvicorn main:app --reload
 ```
 
 ## Manual de implementación
-* Definir el diccionario 'nodes' del archivo '/nodes/node_list.py'
+* Definir el diccionario 'nodes' del archivo [/nodes/node_list.py]
 * Crear el archivo vacio '/nodes/results.json' si no existe
