@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Mainnet",
+        "status": "online",
+        "response_time": 0.4872701168060303
+    },
+    {
+        "name": "Sepolia",
+        "status": "online",
+        "response_time": 0.5229926109313965
+    },
+    {
+        "name": "Holesky",
+        "status": "online",
+        "response_time": 1.0391263961791992
+    }
+]

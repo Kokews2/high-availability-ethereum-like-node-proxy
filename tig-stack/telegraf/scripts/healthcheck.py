@@ -9,7 +9,7 @@ def healthcheck():
         "jsonrpc": "2.0",
         "method": "web3_clientVersion",
         "params": [],
-        "id": 1 
+        "id": 1
     }
 
     healthcheck = []
@@ -23,23 +23,24 @@ def healthcheck():
             response = requests.post(url, json=rpc_payload)
             t_fin = time.time()
 
-            result = {
-                "name": node['name'],
-                "url": node['url'],
-                "status": response.status_code,
-                "response_time": t_fin - t_init
-            }
-            
-        except Exception as e:
-            # status=1 (ERROR)
-            result = {
-                "name": node['name'],
-                "url": node['url'],
-                "status": 1,
-                "response_time": None
-            }   
+            if response.status_code == 200:
+                status = "online"
+                response_time = t_fin - t_init
+            else:
+                status = "offline"
+                response_time = None
+        except Exception:
+            status = "offline"
+            response_time = None
 
-        healthcheck.append(result)
+        healthcheck.append({
+            "name": node['name'],
+            "status": status,
+            "response_time": response_time
+        })
+
+    with open('healthcheck.json', 'w') as file:
+        json.dump(healthcheck, file)
 
     return healthcheck
 
@@ -65,15 +66,3 @@ if __name__ == "__main__":
     # healthcheck_list = healthcheck()
     # select_node(healthcheck_list)
     print( json.dumps(healthcheck()) )
-
-"""
-if __name__ == "__main__":
-    healthcheck = healthcheck()
-    print("Resultados del healthcheck:")
-    for result in healthcheck:
-        print(f"Nodo: {result['name']}, Estado: {result['status']}, Tiempo Respuesta: {result['response_time']}")
-
-    node = select_node(healthcheck)
-    print("\nNodo más eficiente:")
-    print(f"Nodo: {node['name']}, Estado: {node['status']}, Tiempo Respuesta: {node['response_time']}")
-"""

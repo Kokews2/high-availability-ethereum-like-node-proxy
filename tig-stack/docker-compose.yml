@@ -15,8 +15,8 @@ services:
   telegraf:
     image: telegraf_ethereum:latest
     volumes:
-      - ${TELEGRAF_CFG_PATH}:/etc/telegraf/telegraf.conf:rw
-      - ${TELEGRAF_SCRIPT_PATH}:/etc/telegraf:rw
+      - ${TELEGRAF_CFG_PATH}:/etc/telegraf/telegraf.conf
+      - ${TELEGRAF_SCRIPT_PATH}:/opt/scripts
     env_file:
       - .env
     depends_on:

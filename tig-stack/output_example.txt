@@ -23,6 +23,19 @@ Salida TWPING Script
 {"sid": "7f000001e9de3d80e0df3f1023a11039", "first": "2024-05-02 16:27:46.158", "last": "2024-05-02 16:27:54.866", "rtt_min": 0.134, "rtt_median": 0.3, "rtt_max": 0.375, "send_time_min": 0.0658, "send_time_median": 0.2, "send_time_max": 0.201, "reflect_time_min": 0.0486, "reflect_time_median": 0.2, "reflect_time_max": 0.285, "reflector_proc_time_min": 0.0062, "reflector_proc_time_max": 0.0572, "two_way_jitter": 0.0, "send_jitter": 0.0, "reflect_jitter": 0.0, "src": "localhost", "src_ip": "localhost", "dst": "localhost", "dst_ip": "localhost", "measurement": "TWPING"}
 
 
-Salida TELEGRAF
+Salida HEALTHCHECK
+
+[{"name": "Mainnet", "url": "https://mainnet.infura.io/v3/ac5fa49e85494dd18f689dbf7e15505d", "status": 200, "response_time": 0.5823748111724854}, {"name": "Sepolia", "url": "https://sepolia.infura.io/v3/ac5fa49e85494dd18f689dbf7e15505d", "status": 200, "response_time": 0.7964627742767334}, {"name": "Holesky", "url": "https://holesky.infura.io/v3/ac5fa49e85494dd18f689dbf7e15505d", "status": 200, "response_time": 1.0837993621826172}]
+
+
+
+Salida TELEGRAF TWPING
 
 > exec_twping,host=farell reflect_jitter=0,reflect_time_max=0.948,reflect_time_median=0.2,reflect_time_min=0.021,reflector_proc_time_max=0.0648,reflector_proc_time_min=0.00525,rtt_max=1.02,rtt_median=0.3,rtt_min=0.0629,send_jitter=0,send_time_max=0.291,send_time_median=0.2,send_time_min=0.042,two_way_jitter=0 1714669190000000000
+
+
+Salida TELEGRAF HEALTHCHECK
+
+> exec,host=farell,name=Mainnet response_time=0.5116927623748779 1715182726000000000
+> exec,host=farell,name=Sepolia response_time=0.45551514625549316 1715182726000000000
+> exec,host=farell,name=Holesky response_time=1.044956922531128 1715182726000000000
