@@ -1,7 +1,7 @@
 import requests
 import time
 import json
-from node_list import nodes
+from node_list import nodes    
 
 def healthcheck():
     # Build the request
@@ -14,11 +14,10 @@ def healthcheck():
 
     healthcheck = []
 
+    # HEALTHCHECK ALGORITHM
     for node in nodes:
+        url = node['url']
         try:
-            # Get the node URL
-            url = node['url']
-
             t_init = time.time()
             response = requests.post(url, json=rpc_payload)
             t_fin = time.time()
@@ -35,34 +34,29 @@ def healthcheck():
 
         healthcheck.append({
             "name": node['name'],
+            "url": url,
             "status": status,
             "response_time": response_time
         })
 
-    with open('healthcheck.json', 'w') as file:
+
+    # SELECT EFFICIENT NODE
+    active_nodes = [node for node in healthcheck if node['status'] == "online"]
+    
+    if healthcheck:
+        efficient_node = min(active_nodes, key = lambda x : x['response_time'])
+    else:
+        efficient_node = None
+
+
+    # SAVING THE DATA IN JSON FILES
+    with open('/opt/scripts/data_json/healthcheck.json', 'w') as file:
         json.dump(healthcheck, file)
+
+    with open('/opt/scripts/data_json/efficient_node.json', 'w') as file:
+        json.dump(efficient_node, file)
 
     return healthcheck
 
-
-
-def select_node(healthcheck):
-    # Search only for active nodes
-    active_nodes = [healthcheck for result in healthcheck if result['status'] == 200]
-    
-    if not active_nodes:
-        # If any node is active, return None
-        node = None
-    else:
-        # Search the one with less time response
-        node = min(healthcheck, key=lambda x:x['response_time'])
-
-    # Save the efficient node in a JSON doc
-    with open('efficient_node.json', 'w') as file:
-        json.dump(node, file)
-
-
 if __name__ == "__main__":
-    # healthcheck_list = healthcheck()
-    # select_node(healthcheck_list)
     print( json.dumps(healthcheck()) )

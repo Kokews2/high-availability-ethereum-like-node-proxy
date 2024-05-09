@@ -3,12 +3,10 @@
 
 # Pycaches
 /__pycache__
-/nodes/__pycache__
-
-# Init.py
-/nodes/__init__.py
+/scripts/python_scripts/__pycache__
 
 # My API token
-/nodes/node_list.py
-/nodes/efficient_node.json
-/nodes/healthcheck_results.json
+/scripts/python_scripts/node_list.py
+
+# Environment variables
+/tig-stack/.env
