@@ -23,7 +23,7 @@ services:
       - influxdb
 
   grafana:
-    image: grafana/grafana-oss:8.4.3
+    image: grafana/grafana
     volumes:
       - grafana-storage:/var/lib/grafana:rw
     depends_on:

@@ -1,4 +1,5 @@
 import requests
+import time
 
 def get_latest_block_number(node_url):
     # Construir el cuerpo de la solicitud JSON-RPC
@@ -11,11 +12,13 @@ def get_latest_block_number(node_url):
 
     try:
         # Enviar la solicitud HTTP POST al nodo Ethereum
+        t_init = time.time()
         response = requests.post(node_url, json=rpc_payload)
+        t_fin = time.time()
         # Leer la respuesta JSON
         data = response.json()
         # Imprimir toda la respuesta
-        print(data)
+        print(t_fin - t_init)
         # Verificar si la respuesta contiene el número de bloque
         if "result" in data:
             block_number_hex = data["result"]
