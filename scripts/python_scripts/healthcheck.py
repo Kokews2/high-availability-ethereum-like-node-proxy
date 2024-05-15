@@ -1,7 +1,7 @@
 import requests
 import time
 import json
-from node_list import nodes    
+from node_list import nodes
 
 def healthcheck():
     # Build the request
@@ -74,16 +74,6 @@ def healthcheck():
         json.dump(efficient_node, file)
 
     return healthcheck
-
-"""
-    # SELECT EFFICIENT NODE
-    active_nodes = [node for node in healthcheck if node['status'] == 200]
-    
-    if active_nodes:
-        efficient_node = min(active_nodes, key = lambda x : x['response_time'])
-    else:
-        efficient_node = None
-"""
     
 
 if __name__ == "__main__":
