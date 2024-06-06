@@ -30,8 +30,7 @@
   "panels": [
     {
       "datasource": {
-        "type": "influxdb",
-        "uid": "adlpe3m0637r4e"
+        "type": "influxdb"
       },
       "fieldConfig": {
         "defaults": {
@@ -97,16 +96,14 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "adlpe3m0637r4e"
+            "type": "influxdb"
           },
           "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Mainnet\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
           "refId": "Mainnet"
         },
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "adlpe3m0637r4e"
+            "type": "influxdb"
           },
           "hide": false,
           "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
@@ -114,8 +111,7 @@
         },
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "adlpe3m0637r4e"
+            "type": "influxdb"
           },
           "hide": false,
           "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Holesky\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
@@ -128,8 +124,7 @@
     },
     {
       "datasource": {
-        "type": "influxdb",
-        "uid": "adlpe3m0637r4e"
+        "type": "influxdb"
       },
       "description": "",
       "fieldConfig": {
@@ -205,8 +200,7 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "SykWEaYSz"
+            "type": "influxdb"
           },
           "groupBy": [
             {
@@ -245,8 +239,7 @@
         },
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "SykWEaYSz"
+            "type": "influxdb"
           },
           "hide": false,
           "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"response_time\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
@@ -254,8 +247,7 @@
         },
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "SykWEaYSz"
+            "type": "influxdb"
           },
           "hide": false,
           "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"response_time\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Holesky\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
@@ -277,8 +269,7 @@
     },
     {
       "datasource": {
-        "type": "influxdb",
-        "uid": "adlpe3m0637r4e"
+        "type": "influxdb"
       },
       "description": "",
       "fieldConfig": {
@@ -358,8 +349,7 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "SykWEaYSz"
+            "type": "influxdb"
           },
           "groupBy": [
             {
@@ -398,8 +388,7 @@
         },
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "SykWEaYSz"
+            "type": "influxdb"
           },
           "hide": false,
           "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"block_number\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
@@ -407,8 +396,7 @@
         },
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "SykWEaYSz"
+            "type": "influxdb"
           },
           "hide": false,
           "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"block_number\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Holesky\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
@@ -442,7 +430,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "Healthcheck",
-  "uid": "z6ORU-YIz",
   "version": 4,
   "weekStart": ""
 }

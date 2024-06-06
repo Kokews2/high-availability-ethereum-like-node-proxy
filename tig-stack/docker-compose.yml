@@ -26,6 +26,7 @@ services:
     image: grafana/grafana
     volumes:
       - grafana-storage:/var/lib/grafana:rw
+      - ${GRAFANA_DATASOURCE_PATH}:/etc/grafana/provisioning/datasources/datasource.yaml
     depends_on:
       - influxdb
     ports:
