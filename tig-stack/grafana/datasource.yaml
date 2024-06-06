@@ -7,8 +7,8 @@ datasources:
     url: http://influxdb:8086
     jsonData:
       version: Flux
-      organization: tfg
-      defaultBucket: mainnet
+      organization: ${DOCKER_INFLUXDB_INIT_ORG}
+      defaultBucket: ${DOCKER_INFLUXDB_INIT_BUCKET}
       tlsSkipVerify: true
     secureJsonData:
-      token: ae5cdaf02c215b9056ca31e5e8efd0ef231a9dcc3a3649f09b635bfedd70626c
+      token: ${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN}
