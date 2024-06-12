@@ -30,7 +30,8 @@
   "panels": [
     {
       "datasource": {
-        "type": "influxdb"
+        "type": "influxdb",
+        "uid": "P5697886F9CA74929"
       },
       "fieldConfig": {
         "defaults": {
@@ -39,40 +40,42 @@
           },
           "fieldMinMax": false,
           "mappings": [],
-          "noValue": "400",
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "yellow",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 100
               },
               {
                 "color": "green",
                 "value": 200
               },
               {
-                "color": "blue",
+                "color": "#6ED0E0",
                 "value": 300
               },
               {
-                "color": "red",
+                "color": "#EF843C",
                 "value": 400
               },
               {
-                "color": "purple",
+                "color": "#E24D42",
                 "value": 500
               }
             ]
-          },
-          "unit": "none"
+          }
         },
         "overrides": []
       },
       "gridPos": {
         "h": 5,
-        "w": 14,
-        "x": 5,
+        "w": 12,
+        "x": 0,
         "y": 0
       },
       "id": 4,
@@ -98,33 +101,135 @@
           "datasource": {
             "type": "influxdb"
           },
-          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Mainnet\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-          "refId": "Mainnet"
+          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Mainnet_Alchemy\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "refId": "Node 1"
         },
         {
           "datasource": {
-            "type": "influxdb"
+            "type": "influxdb",
+            "uid": "P5697886F9CA74929"
           },
           "hide": false,
-          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-          "refId": "Sepolia"
+          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Mainnet_Infura_node1\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "refId": "Node 2"
         },
         {
           "datasource": {
-            "type": "influxdb"
+            "type": "influxdb",
+            "uid": "P5697886F9CA74929"
           },
           "hide": false,
-          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Holesky\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-          "refId": "Holesky"
+          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Mainnet_Infura_node2\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "refId": "Node 3"
         }
       ],
-      "title": "STATUS CODE",
+      "title": "STATUS CODE (MAINNET)",
       "transparent": true,
       "type": "stat"
     },
     {
       "datasource": {
-        "type": "influxdb"
+        "type": "influxdb",
+        "uid": "P5697886F9CA74929"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 100
+              },
+              {
+                "color": "green",
+                "value": 200
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 300
+              },
+              {
+                "color": "#EF843C",
+                "value": 400
+              },
+              {
+                "color": "#E24D42",
+                "value": 500
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb"
+          },
+          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia_Alchemy\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "refId": "Node 1"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P5697886F9CA74929"
+          },
+          "hide": false,
+          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia_Infura_node1\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "refId": "Node 2"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P5697886F9CA74929"
+          },
+          "hide": false,
+          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia_Infura_node2\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"status_code\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "refId": "Node 3"
+        }
+      ],
+      "title": "STATUS CODE (SEPOLIA)",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P5697886F9CA74929"
       },
       "description": "",
       "fieldConfig": {
@@ -148,7 +253,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "stepBefore",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -169,7 +274,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -179,7 +285,7 @@
       },
       "gridPos": {
         "h": 9,
-        "w": 24,
+        "w": 12,
         "x": 0,
         "y": 5
       },
@@ -218,8 +324,8 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"response_time\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Mainnet\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-          "refId": "Mainnet",
+          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Mainnet_Alchemy\" or r[\"_field\"] == \"Mainnet_Infura_node1\" or r[\"_field\"] == \"Mainnet_Infura_node2\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"response_time\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "refId": "Nodes",
           "resultFormat": "time_series",
           "select": [
             [
@@ -236,25 +342,9 @@
             ]
           ],
           "tags": []
-        },
-        {
-          "datasource": {
-            "type": "influxdb"
-          },
-          "hide": false,
-          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"response_time\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-          "refId": "Sepolia"
-        },
-        {
-          "datasource": {
-            "type": "influxdb"
-          },
-          "hide": false,
-          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"response_time\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Holesky\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-          "refId": "Holesky"
         }
       ],
-      "title": "RESPONSE TIME",
+      "title": "RESPONSE TIME (MAINNET)",
       "transformations": [
         {
           "id": "renameByRegex",
@@ -269,7 +359,142 @@
     },
     {
       "datasource": {
-        "type": "influxdb"
+        "type": "influxdb",
+        "uid": "P5697886F9CA74929"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Response Time",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepBefore",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 5
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.4.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia_Alchemy\" or r[\"_field\"] == \"Sepolia_Infura_node1\" or r[\"_field\"] == \"Sepolia_Infura_node2\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"response_time\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "refId": "Nodes",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "RESPONSE TIME (SEPOLIA)",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(\\w+) (.*)$",
+            "renamePattern": "$1"
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P5697886F9CA74929"
       },
       "description": "",
       "fieldConfig": {
@@ -328,11 +553,11 @@
       },
       "gridPos": {
         "h": 9,
-        "w": 24,
+        "w": 12,
         "x": 0,
         "y": 14
       },
-      "id": 2,
+      "id": 5,
       "options": {
         "legend": {
           "calcs": [],
@@ -367,7 +592,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"block_number\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Mainnet\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Mainnet_Infura_node2\" or r[\"_field\"] == \"Mainnet_Infura_node1\" or r[\"_field\"] == \"Mainnet_Alchemy\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"block_number\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
           "refId": "Mainnet",
           "resultFormat": "time_series",
           "select": [
@@ -385,25 +610,143 @@
             ]
           ],
           "tags": []
-        },
-        {
-          "datasource": {
-            "type": "influxdb"
-          },
-          "hide": false,
-          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"block_number\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-          "refId": "Sepolia"
-        },
-        {
-          "datasource": {
-            "type": "influxdb"
-          },
-          "hide": false,
-          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> drop(columns: [\"host\"])\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"block_number\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Holesky\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
-          "refId": "Holesky"
         }
       ],
-      "title": "LAST BLOCK NUMBER",
+      "title": "LAST BLOCK NUMBER (MAINNET)",
+      "transformations": [
+        {
+          "id": "renameByRegex",
+          "options": {
+            "regex": "^(\\w+) (.*)$",
+            "renamePattern": "$1"
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P5697886F9CA74929"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Last Block Number",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 14
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.4.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"mainnet\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"exec\")\n  |> filter(fn: (r) => r[\"_field\"] == \"Sepolia_Alchemy\" or r[\"_field\"] == \"Sepolia_Infura_node1\" or r[\"_field\"] == \"Sepolia_Infura_node2\")\n  |> filter(fn: (r) => r[\"measurement\"] == \"block_number\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+          "refId": "Mainnet",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "LAST BLOCK NUMBER (SEPOLIA)",
       "transformations": [
         {
           "id": "renameByRegex",
@@ -430,6 +773,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Healthcheck",
-  "version": 4,
+  "uid": "adokqal3t1vr4e",
+  "version": 2,
   "weekStart": ""
 }
