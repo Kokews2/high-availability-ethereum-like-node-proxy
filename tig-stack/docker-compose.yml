@@ -33,6 +33,25 @@ services:
       - influxdb
     ports:
       - ${GRAFANA_PORT}:3000
+  
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - ${LOKI_PORT}:3100
+    volumes:
+      - ${LOKI_CFG_PATH}:/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/local-config.yaml
+
+  alloy:
+    image: grafana/alloy:latest
+    ports:
+      - ${ALLOY_PORT}:12345
+    volumes:
+      - ${ALLOY_CFG_PATH}:/etc/alloy/config.alloy
+      - ${ALLOY_LOGS_PATH}:/tmp/app-logs/
+    command: 
+    depends_on:
+      - loki
 
 volumes:
   grafana-storage:

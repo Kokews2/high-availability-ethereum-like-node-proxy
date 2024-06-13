@@ -10,3 +10,6 @@
 
 # Environment variables
 /tig-stack/.env
+
+# FastAPI logs
+fastapi.log
