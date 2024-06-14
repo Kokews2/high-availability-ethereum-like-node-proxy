@@ -7,7 +7,7 @@ import logging
 app = FastAPI()
 
 # Logger settings
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filename='./tig-stack/alloy/logs/fastapi.log', filemode='a')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', filename='./monitoring-stack/alloy/logs/fastapi.log', filemode='a')
 
 @app.post("/receive_request")
 async def receive_request(request: Request):
