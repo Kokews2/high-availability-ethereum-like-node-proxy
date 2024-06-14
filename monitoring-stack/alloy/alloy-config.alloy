@@ -1,0 +1,17 @@
+// Searching fastapi.log file in the local directory
+local.file_match "apilogs" {
+    path_targets = [{"__path__" = "/tmp/app-logs/fastapi.log"}]
+}
+
+// Receiving logs files (targets) from "file_match" object and fowarding to a loki receiver component "loki_write"
+loki.source.file "local_files" {
+    targets    = local.file_match.apilogs.targets
+    forward_to = [loki.write.default.receiver]
+}
+
+// Establish a connection with loki (loki receiver component)
+loki.write "default" {
+    endpoint {
+        url = "http://loki:3100/loki/api/v1/push"
+    }
+}

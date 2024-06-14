@@ -49,7 +49,7 @@ services:
     volumes:
       - ${ALLOY_CFG_PATH}:/etc/alloy/config.alloy
       - ${ALLOY_LOGS_PATH}:/tmp/app-logs/
-    command: 
+    command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
     depends_on:
       - loki
 

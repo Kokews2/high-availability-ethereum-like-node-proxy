@@ -95,7 +95,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -194,7 +194,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -758,6 +758,44 @@
       ],
       "transparent": true,
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 9,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": false,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "editorMode": "builder",
+          "expr": "{filename=\"/tmp/app-logs/fastapi.log\"} |= ``",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "LOGS",
+      "transparent": true,
+      "type": "logs"
     }
   ],
   "refresh": "",
@@ -774,6 +812,6 @@
   "timezone": "",
   "title": "Healthcheck",
   "uid": "adokqal3t1vr4e",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }
