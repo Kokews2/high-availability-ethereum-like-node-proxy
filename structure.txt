@@ -1,0 +1,36 @@
+.
+├── docker_image
+│   └── Dockerfile
+├── .gitignore
+├── main.py
+├── monitoring-stack
+│   ├── alloy
+│   │   ├── alloy-config.alloy
+│   │   └── logs
+│   │       └── fastapi.log
+│   ├── docker-compose.yml
+│   ├── entrypoint.sh
+│   ├── .env
+│   ├── grafana
+│   │   ├── datasource.yaml
+│   │   └── healthcheck_dashboard.json
+│   ├── loki
+│   │   └── loki-config.yaml
+│   └── telegraf
+│       └── telegraf.conf
+├── output_example.txt
+├── README.md
+├── scripts
+│   ├── data_json
+│   │   ├── efficient_node.json
+│   │   └── healthcheck.json
+│   └── python_scripts
+│       ├── healthcheck.py
+│       └── node_list.py
+├── structure.txt
+├── test_scripts
+│   ├── basic_request.py
+│   └── request_web3.py
+└── user.py
+
+11 directories, 22 files

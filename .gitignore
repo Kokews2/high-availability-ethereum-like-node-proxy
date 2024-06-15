@@ -9,7 +9,7 @@
 /scripts/python_scripts/node_list.py
 
 # Environment variables
-/monitoring-stack/.env
+# /monitoring-stack/.env
 
 # FastAPI logs
 /monitoring-stack/alloy/logs

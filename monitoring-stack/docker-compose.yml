@@ -40,6 +40,8 @@ services:
       - ${LOKI_PORT}:3100
     volumes:
       - ${LOKI_CFG_PATH}:/etc/loki/local-config.yaml
+    env_file:
+      - .env
     command: -config.file=/etc/loki/local-config.yaml
 
   alloy:
@@ -49,6 +51,8 @@ services:
     volumes:
       - ${ALLOY_CFG_PATH}:/etc/alloy/config.alloy
       - ${ALLOY_LOGS_PATH}:/tmp/app-logs/
+    env_file:
+      - .env
     command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
     depends_on:
       - loki
